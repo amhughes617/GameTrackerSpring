@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.ArrayList;
+
 /**
  * Created by alexanderhughes on 3/8/16.
  */
@@ -21,8 +23,8 @@ public class GameTrackerController {
     }
 
     @RequestMapping(path = "/add-game", method = RequestMethod.POST)
-    public String addGame(String gameName, String gamePlatform, int gameYear) {
-        Game game = new Game(gameName, gamePlatform, gameYear);
+    public String addGame(String gameName, String gamePlatform, int gameYear, String gameGenre) {
+        Game game = new Game(gameName, gamePlatform, gameGenre, gameYear);
         games.save(game);
         return "redirect:/";
     }

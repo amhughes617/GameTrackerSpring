@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by alexanderhughes on 3/8/16.
@@ -13,16 +14,21 @@ public class Game {
     @Id
     @GeneratedValue
     private int id;
+    @NotNull
     private String name;
+    @NotNull
     private String platform;
-    private int releaseYear;
+    @NotNull
+    private String genre;
+    private int releaseYear;//won't be null, it's a primitive type, throws error if null passed into it
 
     public Game() {} //need blank constructor for hibernate findAll() for method
 
-    public Game(String name, String platform, int releaseYear) {
+    public Game(String name, String platform, String genre, int releaseYear) {
         this.name = name;
         this.platform = platform;
         this.releaseYear = releaseYear;
+        this.genre = genre;
     }
 
     public int getId() {
@@ -55,5 +61,13 @@ public class Game {
 
     public void setReleaseYear(int releaseYear) {
         this.releaseYear = releaseYear;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 }
