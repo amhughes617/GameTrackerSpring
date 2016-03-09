@@ -1,9 +1,6 @@
 package com.theironyard;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -21,6 +18,8 @@ public class Game {
     @NotNull
     private String genre;
     private int releaseYear;//won't be null, it's a primitive type, throws error if null passed into it
+    @ManyToOne
+    User user;
 
     public Game() {} //need blank constructor for hibernate findAll() for method
 
