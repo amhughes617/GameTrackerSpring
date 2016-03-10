@@ -1,4 +1,6 @@
-package com.theironyard;
+package com.theironyard.entities;
+
+import com.theironyard.entities.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -19,15 +21,20 @@ public class Game {
     private String genre;
     private int releaseYear;//won't be null, it's a primitive type, throws error if null passed into it
     @ManyToOne
-    User user;
+    private User user;
 
     public Game() {} //need blank constructor for hibernate findAll() for method
 
-    public Game(String name, String platform, String genre, int releaseYear) {
+    public Game(String name, String platform, String genre, int releaseYear, User user) {
         this.name = name;
         this.platform = platform;
         this.releaseYear = releaseYear;
         this.genre = genre;
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public int getId() {
